@@ -8,6 +8,7 @@ export default function NavBar() {
     <div className='navbar'>
       <div className='links'>
         <Link className='link' to="/">Shop</Link>
+        <Link to="/contact"> Contact </Link>
         <Link className='link' to="/cart">
           <ShoppingCart size={32}/>
         </Link>

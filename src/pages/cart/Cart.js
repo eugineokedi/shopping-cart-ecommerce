@@ -6,7 +6,7 @@ import CartItem from './CartItem';
 import './Cart.css';
 
 export default function Cart() {
-  const {cartItems, getTotalCartAmount} = useContext(ShopContext);
+  const {cartItems, getTotalCartAmount, checkout} = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
   const navigate = useNavigate();
 
@@ -27,7 +27,11 @@ export default function Cart() {
       <div className='checkOut'>
         <p>Subtotal:{totalAmount} </p>
         <button onClick={() => navigate('/')}>Continue Shopping</button>
-        <button className='checkout button'>checkOut</button>
+        <button className='checkout button' onClick={() => {
+              checkout();
+              navigate("/checkout");
+            }}>checkOut
+        </button>
       </div>
       : <h1>Empty Cart</h1>}
     </div>

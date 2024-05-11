@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Cart from './pages/cart/Cart';
 import Shop from './pages/shop/Shop';
-import ShopContextProvider from './context/ShopContext';
+import { ShopContextProvider } from "./context/ShopContext";
 
 function App() {
   return (

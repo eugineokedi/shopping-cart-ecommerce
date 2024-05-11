@@ -1,11 +1,15 @@
 import React, {useContext} from 'react';
 import { PRODUCTS } from '../../Products';
-import ShopContext from '../../context/ShopContext';
+import { ShopContext } from '../../context/ShopContext';
+import { useNavigate } from 'react-router-dom';
 import CartItem from './CartItem';
 import './Cart.css';
 
 export default function Cart() {
-  const {cartItems} = useContext(ShopContext);
+  const {cartItems, getTotalCartAmount} = useContext(ShopContext);
+  const totalAmount = getTotalCartAmount();
+  const navigate = useNavigate();
+
   return (
     <div className='cart'>
       <div>
@@ -16,9 +20,16 @@ export default function Cart() {
           if (cartItems[product.id] !== 0) {
             return <CartItem data={product} />;
           }
-          return 0;
+          return null;
         })}
       </div>
+      {totalAmount > 0 ?
+      <div className='checkOut'>
+        <p>Subtotal:{totalAmount} </p>
+        <button onClick={() => navigate('/')}>Continue Shopping</button>
+        <button className='checkout button'>checkOut</button>
+      </div>
+      : <h1>Empty Cart</h1>}
     </div>
   )
 }
